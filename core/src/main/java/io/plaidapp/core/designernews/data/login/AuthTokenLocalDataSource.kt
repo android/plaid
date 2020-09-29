@@ -36,13 +36,13 @@ class AuthTokenLocalDataSource(private val prefs: SharedPreferences) {
         }
 
     fun clearData() {
-        prefs.edit { KEY_ACCESS_TOKEN to null }
+        prefs.edit { putString(KEY_ACCESS_TOKEN, null) }
         authToken = null
     }
 
     companion object {
         const val DESIGNER_NEWS_AUTH_PREF = "DESIGNER_NEWS_AUTH_PREF"
-        private const val KEY_ACCESS_TOKEN = "KEY_ACCESS_TOKEN"
+        internal const val KEY_ACCESS_TOKEN = "KEY_ACCESS_TOKEN"
 
         @Volatile
         private var INSTANCE: AuthTokenLocalDataSource? = null
